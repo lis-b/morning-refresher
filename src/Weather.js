@@ -6,11 +6,18 @@ class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: 'Vancouver,CA',
+      city: 'Vancouver',
+      country: 'Canada',
+      lat: 49.2827,
+      lon: -123.1207,
       units: 'metric',
       current: {
         weather: [{}]
       },
+      forecast: [{
+        weather: [{}]
+      }],
+      hours: 5,
       isLoaded: false,
       error: null,
       isSet: true,
@@ -18,29 +25,14 @@ class Weather extends React.Component {
   }
 
   componentDidMount() {
-    const { city, units } = this.state;
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${process.env.REACT_APP_OWM_API_KEY}`)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              current: result,
-            });
-          },
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        );
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${process.env.REACT_APP_OWM_API_KEY}`)
+    const { lat, lon, units } = this.state;
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&exclude=minutely,daily,alerts&appid=${process.env.REACT_APP_OWM_API_KEY}`)
         .then(res => res.json())
         .then(
           (result) => {
             this.setState({
               isLoaded: true,
-              current: result,
+              current: result.current,
             });
           },
           (error) => {
@@ -67,9 +59,9 @@ class Weather extends React.Component {
   }
 
   weather() {
-    const { current, isLoaded, error } = this.state;
+    const { city, country, current, isLoaded, error } = this.state;
     const weather = current.weather[0];
-    const degrees = current.main;
+    const degrees = current.temp;
 
     if (error) {
       return <div className="module weather error">Error: {error.message}</div>;
@@ -78,13 +70,11 @@ class Weather extends React.Component {
     } else {
       return (
         <div className="module weather">
-          <h1 className="city">{current.name}, {current.sys.country}</h1>
+          <h1 className="city">{city}, {country}</h1>
             <h2 className="weather-type">{weather.main}</h2>
               <h3 className="weather-desc">{weather.description}</h3>
 
-            <h2 className="temperature">{this.temperature(degrees.temp)}</h2>
-
-          <h2 className="forecast">Forecast</h2>
+            <h2 className="temperature">{this.temperature(degrees)}</h2>
         </div>
       );
     }
