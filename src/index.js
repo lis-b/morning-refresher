@@ -1,19 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './import-normalize.css';
+import './styles/import-normalize.css';
 import './index.sass';
 
-import DarkModeToggle from './DarkModeToggle';
-import Weather from './Weather';
+import App from './App';
+import DarkModeToggle from './components/DarkModeToggle';
 
 ReactDOM.render(
   <>
-      <React.StrictMode>
-        <Weather />
-      </React.StrictMode>
-      <div className="module calendar"></div>
-      <div className="module news"></div>
+      <App />
       <DarkModeToggle />
   </>
   ,
