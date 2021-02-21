@@ -14,14 +14,15 @@ class Calander extends Component {
      }
 
      handleNewEvent(time, eventName) {
-        this.setState({events: this.state.events.concat(eventName),
+        this.setState({events: this.state.events.concat([[time, eventName]]),
                        count: this.state.count + 1});
+        
      }
 
      renderEvents(){
          if(EventSource.length === 0) return <p>No events scheduled today</p>;
         
-         return <ul>{this.state.events.map(item => (<li key={item}>{item}</li>))}</ul>;
+         return <ul>{this.state.events.map(item => (<li key={item}>{item[0][0]+':'+item[0][1] + '        '+ item[1]}</li>))}</ul>;
      }
 
     render() { 
