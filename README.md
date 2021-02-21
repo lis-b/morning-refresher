@@ -5,11 +5,11 @@ This website was created during BCHacks 2.0 for their 24 hour hackathon. We used
 
 ### Getting started
 
-##### To run locally
+##### To run build files locally
 - Install npm through node.js [here](https://nodejs.org/en/).
 - Clone the repository
-- Run npm install to install all dependencies.
-- Run npm start from a terminal in the morning-refresher directory.
+- Run 'npm i -g serve'
+- Run 'npm run serve' from a terminal in the morning-refresher directory.
 
 ##### Sample Screenshot of the site
 ![Morning Refresher](morning-refresher-demo.png)
