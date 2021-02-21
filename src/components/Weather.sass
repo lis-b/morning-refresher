@@ -59,11 +59,14 @@ $hour-weather-margin-bottom: 2px
 $hour-temp-size: 17px
 $hour-temp-weight: 700
 
+// SETTINGS
+
 
 div.weather
   display: grid
   justify-content: center
   align-content: center
+  position: relative
 
   *
    text-align: center
@@ -209,6 +212,31 @@ div.weather
       font:
         size: $hour-temp-size
         weight: $hour-temp-weight
+
+  // SETTINGS
+  div.settingsIcon
+    position: absolute
+    top: 30px
+    right: 30px
+    cursor: pointer
+    opacity: 0.3
+
+    svg
+      fill: none
+
+  h1.units
+    margin-bottom: 20px
+
+  button.selected
+      cursor: default
+      opacity: 1
+
+  button
+    margin: 0 10px
+    opacity: 0.5
+
+    &:focus
+      opacity: 1
 
   // OTHER
   div.icon
