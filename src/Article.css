@@ -1,0 +1,64 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+div .module-article {
+    border-bottom: 5px solid darkgrey;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    
+    
+}
+
+
+body {
+    align-self: center;
+    font-family: "Open Sans";
+    
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    
+}
+
+h1 {
+    font-size: 24px;
+    background-color:#ceddf5;
+    text-align: left;
+    padding: 20px;
+}
+
+.source, .pub {
+    margin-top: -10px;
+    font-size: 13px;
+    text-align: left;
+    font-weight: normal;
+}
+
+a:link {
+  color: #a959eb;
+}
+
+a:hover {
+  color: #d6b6f0;
+}
+
+.desc {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    padding: 20px;
+}
+
+.content {
+    font-size: 14px;
+    text-align: left;
+    padding: 20px;
+    white-space: pre-line
+}
+
+img {
+    max-width: 300px;
+    height: auto;
+}
