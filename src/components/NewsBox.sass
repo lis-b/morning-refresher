@@ -1,4 +1,6 @@
-$headlines-size: 40px
+$title-size: 40px
+$title-weight: 700
+$title-margin-bottom: 15px
 
 $select-title-text-transform: uppercase
 $select-title-margin: 10px
@@ -7,15 +9,25 @@ $select-margin: 5px
 
 $button-margin: 10px
 
+$select-area-margin-bottom: 40px
+
 div.news
   h1.title
     text-align: center
     background: none
-    margin: 0
-    font-size: $headlines-size
+    margin:
+      top: 0
+      left: 0
+      right: 0
+      bottom: $title-margin-bottom
+    font:
+      size: $title-size
+      weight: $title-weight
+    padding: 0
 
   div.selection
     text-align: center
+    margin-bottom: $select-area-margin-bottom
 
     b
       text-transform: $select-title-text-transform

@@ -1,51 +1,58 @@
+$divider-size: 5px;
+$article-margin: 50px;
+$date-margin-top: 5px;
+$h1-font-weight: 600;
+$date-font-weight: 400;
+$desc-font-weight: 300;
+
 div.news {
-  div .module-article {
-      border-bottom: 5px solid darkgrey;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      padding: 20px;
+  div.module-article {
+      border-top: $divider-size solid;
+      padding: $article-margin 0;
+  }
 
-
+  a {
+    text-decoration: none
   }
 
   h1 {
       font-size: 24px;
-      background-color:#ceddf5;
       text-align: left;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
+      font-weight: $h1-font-weight;
+
+      svg {
+        fill: none;
+        height: 1em;
+        position: relative;
+        top: 4px;
+      }
   }
 
-  .source, .pub {
-      margin-top: -10px;
+  p {
+    margin: 0
+  }
+
+  .pub {
+      margin-top: 5px;
+      margin-left: 20px;
       font-size: 13px;
+      font-weight: $date-font-weight;
       text-align: left;
-      font-weight: normal;
-  }
-
-  a:link {
-    color: #a959eb;
-  }
-
-  a:hover {
-    color: #d6b6f0;
   }
 
   .desc {
       font-size: 16px;
-      font-weight: bold;
+      font-weight: $desc-font-weight;
       text-align: left;
-      padding: 20px;
-  }
-
-  .content {
-      font-size: 14px;
-      text-align: left;
-      padding: 20px;
-      white-space: pre-line
+      padding: 0 20px;
   }
 
   img {
-      max-width: 300px;
+      max-width: 75%;
       height: auto;
+      margin: 30px auto;
+      border-radius: 5px;
   }
 }
