@@ -1,5 +1,7 @@
 import React from 'react';
 import './Weather.sass';
+import { ReactComponent as SettingsIcon } from '../svg/Feather/settings.svg';
+import { ReactComponent as ExitIcon } from '../svg/Feather/x.svg';
 
 import WeatherIcon from './WeatherIcon';
 
@@ -7,10 +9,30 @@ class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: 'Springfield',
+      // city: 'Springfield',
+      // country: 'Canada',
+      // lat: 49.9051,
+      // lon: -96.7432,
+
+      // city: 'Kelowna',
+      // country: 'Canada',
+      // lat: 49.8880,
+      // lon: -119.4960,
+
+      city: 'Vancouver',
       country: 'Canada',
-      lat: 49.9051,
-      lon: -96.7432,
+      lat: 49.2827,
+      lon: -123.1207,
+
+      // city: 'Tokyo',
+      // country: 'Japan',
+      // lat: 35.6762,
+      // lon: 139.6503,
+
+      // city: 'Montevideo',
+      // country: 'Uruguay',
+      // lat: -34.9011,
+      // lon: -56.1645,
 
       units: 'metric',
       hours: 8,
@@ -72,6 +94,7 @@ class Weather extends React.Component {
     } else {
       return (
         <div className="module weather"><div className="wrapper">
+          {this.settingsIcon()}
           <h1 className="city">{city}</h1>
           <h1 className="country">{country}</h1>
 
@@ -129,8 +152,32 @@ class Weather extends React.Component {
   }
 
   settings() {
-    return <div className="module weather settings">
-      SKELETON: if you see this, there must be a serious bug in Weather.settings()
+    const { units } = this.state;
+    return <div className="module weather settings"><div className="wrapper">
+      {this.exitIcon()}
+
+      <h1 className="units">Units</h1>
+      <button className={`unit-select
+        ${units === 'metric' ? ' selected' : ''}
+      `} onClick={() => this.setState({units: 'metric'})}>Metric</button>
+      <button className={`unit-select
+        ${units === 'imperial' ? ' selected' : ''}
+      `} onClick={() => this.setState({units: 'imperial'})}>Imperial</button>
+    </div></div>;
+  }
+
+  exitIcon() {
+    return <div className="settingsIcon exit" onClick={() => {
+      this.setState({isSet: true, isLoaded: false});
+      this.componentDidMount();
+    }}>
+      <ExitIcon />
+    </div>;
+  }
+
+  settingsIcon() {
+    return <div className="settingsIcon" onClick={() => this.setState({isSet: false})}>
+      <SettingsIcon />
     </div>;
   }
 }
