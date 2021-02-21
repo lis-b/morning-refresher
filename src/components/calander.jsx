@@ -7,14 +7,14 @@ class Calander extends Component {
         events: []
      }
 
-     constructor() {
-         super();
+     constructor(props) {
+         super(props);
          this.handleNewEvent = this.handleNewEvent.bind(this);
          this.renderEvents = this.renderEvents.bind(this);
      }
 
-     handleNewEvent() {
-        this.setState({events: this.state.events.concat(this.state.count),
+     handleNewEvent(eventName) {
+        this.setState({events: this.state.events.concat(eventName),
                        count: this.state.count + 1});
      }
 
@@ -33,7 +33,7 @@ class Calander extends Component {
                 <button onClick={this.handleNewEvent}>
                     Add new Event
                 </button>
-                <TextInput/>
+                <TextInput handleNewEvent = {this.handleNewEvent}/>
                 
             </div>
             
