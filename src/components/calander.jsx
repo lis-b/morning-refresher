@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import TextInput from './textInput';
 
 class Calander extends Component {
     state = { 
         count: 0,
-        events: [1,2,3,4]
+        events: []
      }
 
      constructor() {
@@ -13,8 +14,8 @@ class Calander extends Component {
      }
 
      handleNewEvent() {
-        this.setState({count: this.state.count + 1,
-                       events: this.state.events.concat(this.state.count)});
+        this.setState({events: this.state.events.concat(this.state.count),
+                       count: this.state.count + 1});
      }
 
      renderEvents(){
@@ -26,12 +27,16 @@ class Calander extends Component {
     render() { 
         return (
             <div>
+                
                 <span>{this.state.count}</span>
                 {this.renderEvents()}
                 <button onClick={this.handleNewEvent}>
                     Add new Event
                 </button>
+                <TextInput/>
+                
             </div>
+            
             )
     }
 }
