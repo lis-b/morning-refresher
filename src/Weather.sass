@@ -4,7 +4,7 @@ $city-weight: 700
 $city-text-transform: initial
 
 $country-size: 20px
-$country-weight: 400
+$country-weight: 300
 $country-text-transform: uppercase
 
 // CURRENT WEATHER
@@ -16,27 +16,30 @@ $temperature-weight: 600
 
 $words-margin: 10px
 $current-margin-top: 30px
-$current-margin-bottom: 30px
+$current-margin-bottom: 20px
 
 // DESCRIPTION AND STATS
-$desc-size: 20px
-$desc-weight: 400
+$desc-size: 17px
+$desc-weight: 300
 
 $stats-title-weight: 700
 $stats-title-text-transform: uppercase
 
-$stats-gap: 10px
+$stats-gap: 7px
 
 $stats-size: 17px
-$stats-weight: 400
+$stats-weight: 300
 
-$stats-margin-top: 20px
+$stats-margin-top: 30px
 $stats-margin-bottom: 40px
 
 $li-margin: 2px
 
-$daily-margin-top: 10px
-$daily-separate: 10px
+$daily-margin-top: 20px
+$daily-separate: 20px
+
+$daily-title-size: 20px
+$daily-title-weight: 700
 
 // FORECAST
 $forecast-size: 20px
@@ -48,7 +51,7 @@ $hour-box-margin: 15px
 $icon-size: 50px
 
 $hour-weather-size: 15px
-$hour-weather-weight: 400
+$hour-weather-weight: 300
 $hour-weather-margin-top: 0
 $hour-weather-margin-bottom: 2px
 
@@ -166,8 +169,12 @@ ul.daily
   margin-top: $daily-margin-top
 
   li.title
+    font:
+      size: $daily-title-size
+      weight: $daily-title-weight
     grid-column: span 2
     margin-bottom: 0
+    text-transform: $stats-title-text-transform
 
   li.high
     margin:

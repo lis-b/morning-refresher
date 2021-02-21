@@ -100,7 +100,7 @@ class Weather extends React.Component {
         <li><b>Feels Like:</b> <span>{toTemperature(current.feels_like, units)}</span></li>
         <li><b>Wind:</b> <span>{toWindSpeed(current.wind_speed, units)}</span></li>
         <ul className="daily">
-          <li className="title"><b>Daily</b></li>
+          <li className="title">Daily</li>
           <li className="high"><b>High:</b> <span>{toTemperature(daily_temps.min, units)}</span></li>
           <li className="low"><b>Low:</b> <span>{toTemperature(daily_temps.max, units)}</span></li>
         </ul>
