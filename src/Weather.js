@@ -11,6 +11,7 @@ class Weather extends React.Component {
       country: 'Canada',
       lat: 49.2827,
       lon: -123.1207,
+
       units: 'metric',
       hours: 5,
 

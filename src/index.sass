@@ -1,4 +1,51 @@
 @use 'fonts/OpenSans/style.sass'
 
+$background: #add8e6
+
+$module-background: white
+
+$margin: 40px
+
+$calendar-height: 400px
+$news-height: 300px
+
+$weather-width: 600px
+$other-width: 400px
+
+$padding: 20px
+$rounded: 50px
+
 *
   font-family: "Open Sans", Helvetica, sans-serif
+  box-sizing: border-box
+
+html, body
+    height: 100%
+    width: 100%
+    margin: 0
+    padding: 0
+    border: 0
+    font-size: 100%
+    vertical-align: baseline
+
+body
+  background: $background
+
+div#root
+  height: 100%
+  width: 100%
+  display: grid
+  justify-content: center
+  align-content: center
+  grid-template-rows: $calendar-height $news-height
+  grid-template-columns: $weather-width $other-width
+  grid-row-gap: $margin
+  grid-column-gap: $margin
+
+div.module
+  background: $module-background
+  border-radius: $rounded
+  padding: $padding
+
+div.weather
+  grid-row: span 2
