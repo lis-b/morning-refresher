@@ -30,10 +30,7 @@ class Calander extends Component {
                 
                 <span>{this.state.count}</span>
                 {this.renderEvents()}
-                <button onClick={this.handleNewEvent}>
-                    Add new Event
-                </button>
-                <TextInput handleNewEvent = {this.handleNewEvent}/>
+                <TextInput  handleNewEvent = {this.handleNewEvent}/>
                 
             </div>
             
