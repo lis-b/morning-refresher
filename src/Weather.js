@@ -1,5 +1,7 @@
 import React from 'react';
 
+// import WeatherIcon from './WeatherIcon';
+
 // const iconURL = icon => `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
 class Weather extends React.Component {
@@ -17,22 +19,25 @@ class Weather extends React.Component {
       forecast: [{
         weather: [{}]
       }],
+      daily_temps: {},
       hours: 5,
       isLoaded: false,
-      error: null,
       isSet: true,
+      error: null,
     }
   }
 
   componentDidMount() {
-    const { lat, lon, units } = this.state;
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&exclude=minutely,daily,alerts&appid=${process.env.REACT_APP_OWM_API_KEY}`)
-        .then(res => res.json())
+    const { lat, lon, units, hours } = this.state;
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&exclude=minutely,alerts&appid=${process.env.REACT_APP_OWM_API_KEY}`)
+        .then(result => result.json())
         .then(
           (result) => {
             this.setState({
               isLoaded: true,
               current: result.current,
+              forecast: result.hourly.slice(0, hours),
+              daily_temps: result.daily[0].temp,
             });
           },
           (error) => {
@@ -44,48 +49,6 @@ class Weather extends React.Component {
         );
   }
 
-  temperature(degree) {
-    let temp = Math.round(degree);
-    let symbol;
-    const { units } = this.state;
-
-    if (units === 'metric' || units === 'imperial') {
-      symbol = '\u00b0';
-    } else {
-      symbol = 'K';
-    }
-
-    return `${temp}${symbol}`;
-  }
-
-  weather() {
-    const { city, country, current, isLoaded, error } = this.state;
-    const weather = current.weather[0];
-    const degrees = current.temp;
-
-    if (error) {
-      return <div className="module weather error">Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div className="module weather loading">Loading...</div>;
-    } else {
-      return (
-        <div className="module weather">
-          <h1 className="city">{city}, {country}</h1>
-            <h2 className="weather-type">{weather.main}</h2>
-              <h3 className="weather-desc">{weather.description}</h3>
-
-            <h2 className="temperature">{this.temperature(degrees)}</h2>
-        </div>
-      );
-    }
-  }
-
-  settings() {
-    return <div className="module weather settings">
-      SETTINGS TO-DO: if you see this, there must be a serious bug
-    </div>;
-  }
-
   render() {
     const { isSet } = this.state;
 
@@ -95,6 +58,105 @@ class Weather extends React.Component {
       return this.settings();
     }
   }
+
+  // RENDER HELPERS
+  weather() {
+    const { error, isLoaded, city, country, current, units } = this.state;
+    const weather = current.weather[0];
+
+    if (error) {
+      return <div className="module weather error">Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div className="module weather loading">Loading...</div>;
+    } else {
+      return (
+        <div className="module weather">
+          <h1 className="city">{city}, {country}</h1>
+
+            <h2 className="weather-type">{weather.main}</h2>
+            <h2 className="temperature">{toTemperature(current.temp, units)}</h2>
+
+            <h3 className="weather-desc">{weather.description}</h3>
+
+            {this.stats()}
+            {this.forecast()}
+        </div>
+      );
+    }
+  }
+
+  stats() {
+    const { current, daily_temps, units } = this.state;
+
+    return (
+      <ul className="stats">
+        <li><b>Feels Like:</b> {toTemperature(current.feels_like, units)}</li>
+
+        <ul className="hi-lo">
+          <li className="title"><b>Daily</b></li>
+          <li className="high"><b>High:</b> {toTemperature(daily_temps.min, units)}</li>
+          <li className="low"><b>Low:</b> {toTemperature(daily_temps.max, units)}</li>
+        </ul>
+
+        <li><b>Wind:</b> {toWindSpeed(current.wind_speed, units)}</li>
+
+      </ul>
+    );
+  }
+
+  forecast() {
+    const { hours, forecast, units } = this.state;
+
+    return (
+      <div className="forecasts">
+        <h1>{hours} Hour Forecast</h1>
+        {forecast.map(item => {
+          let weather = item.weather[0];
+          return (
+            <div className="hour">
+              <h2>{weather.main}</h2>
+              <h3 className="temp">{toTemperature(item.temp, units)}</h3>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  settings() {
+    return <div className="module weather settings">
+      SKELETON: if you see this, there must be a serious bug in Weather.settings()
+    </div>;
+  }
+}
+
+const toTemperature = (number, units) => {
+  let temp = Math.round(number);
+  let symbol;
+
+  if (units === 'metric' || units === 'imperial') {
+    symbol = '\u00b0';
+  } else {
+    symbol = 'K';
+  }
+
+  return `${temp}${symbol}`;
+}
+
+const toWindSpeed = (number, units) => {
+  let speed = number;
+  let symbol;
+
+  if (units === 'imperial') {
+    symbol = 'mph';
+  } else {
+    speed *= 3.6;
+    symbol = 'km/h';
+  }
+
+  speed = Math.round(speed * 10) / 10;
+
+  return `${speed} ${symbol}`;
 }
 
 export default Weather;
