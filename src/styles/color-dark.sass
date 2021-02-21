@@ -9,6 +9,8 @@ $toggle-opacity: 0.9
 
 $shadow: 0 0 10px 2px hsla(0, 0%, 0%, 0.6)
 
+$input-focus: $module-background
+
 body:before
   background: $background
   background-color: $background-fallback
@@ -34,3 +36,16 @@ body.dark-mode
 
   img
     box-shadow: $shadow
+
+  button
+    background-color: $text-color
+    color: $background-fallback
+
+  select,
+  input
+    border-color: $text-color
+    color: $text-color
+
+  input
+    &:focus
+      background: $input-focus

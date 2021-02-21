@@ -16,6 +16,14 @@ $rounded: 50px
 
 $toggle-margin: 20px
 
+$button-padding-vertical: 5px
+$button-padding-horizontal: 10px
+$button-text-transform: uppercase
+$button-size: 15px
+$button-weight: 600
+
+$input-weight: 300
+
 *
   font-family: "Open Sans", Helvetica, sans-serif
   box-sizing: border-box
@@ -67,3 +75,33 @@ div.module
 
 div.weather
   grid-row: span 2
+
+button,
+select,
+input
+  border-radius: 5px
+  outline: none
+  border: 0
+  height: auto
+  line-height: 1
+  font-size: $button-size
+
+button,
+select
+  cursor: pointer
+
+button
+  opacity: 0.75
+  text-transform: $button-text-transform
+  padding: $button-padding-vertical $button-padding-horizontal
+  font-weight: $button-weight
+
+  &:focus
+    opacity: 1
+
+select,
+input
+  border: 1px solid
+  padding: $button-padding-vertical
+  background: transparent
+  font-weight: $input-weight

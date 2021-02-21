@@ -1,3 +1,83 @@
+$h1-size: 40px
+
+$p-margin-vertical: 9px
+
+$center-size: 15px
+$center-weight: 300
+
+$items-row-gap: 10px
+$items-time-width: 55px
+
+$item-time-weight: 800
+
+$text-input-margin: 22px
+
+$input-title-text-transform: uppercase
+$input-title-margin: 15px
+$input-margin: 10px
+$button-margin: 10px
+$colon-margin: 5px
+
 div.calendar
-  input
-    background: transparent
+  h1
+    text-align: center
+    margin: 0
+    font-size: $h1-size
+
+  p
+    margin: $p-margin-vertical 0
+
+    &.center
+      text-align: center
+      font:
+        size: $center-size
+        weight: $center-weight
+
+  div.items
+    display: grid
+    align-content: center
+    grid-template-columns: $items-time-width auto
+    grid-row-gap: $items-row-gap
+
+    div.item-time
+      font-weight: $item-time-weight
+
+
+  div.text-input
+    text-align: center
+    margin-top: $text-input-margin
+
+  form
+    display: grid
+    grid-template-rows: repeat(3, auto)
+    grid-template-columns: repeat(2, auto)
+    grid-row-gap: $input-margin
+    grid-column-gap: $input-title-margin
+    justify-items: center
+    align-items: center
+
+    b
+      text-transform: $input-title-text-transform
+      justify-self: end
+
+    button
+      margin: $button-margin
+      grid-column: span 2
+
+    span,
+    input
+      justify-self: start
+
+    span
+      input
+        width: 35px
+
+      input[name="Hours"]
+        text-align: right
+
+      span
+        display: inline-block
+        margin: 0 $colon-margin
+
+    input[name="Event Name"]
+      width: 200px
