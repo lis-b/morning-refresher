@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Article from "./Article";
-import NewsAPI from "newsapi";
-import SelectSearch from 'react-select-search';
+import "./NewsBox.css";
 
-// const categories = ["business", "entertainment", "general", "health", "science", "sports", "technology"];
 const newsAPImain = "http://newsapi.org/v2/top-headlines?";
 const apiKey = "&apiKey=f8d50294fffa4836a8c3bacb603f03c7";
 
@@ -29,14 +27,12 @@ class NewsBox extends Component {
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.handleCountryChange = this.handleCountryChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.processInput = this.processInput.bind(this);
     }
 
     handleCategoryChange(event) { this.setState({ category: event.target.value }); }
 
     handleCountryChange(event) { this.setState ({ country: event.target.value}); }
 
-    // processInput(event) {} //TODO
 
     handleSubmit(event) {
         event.preventDefault();
@@ -73,7 +69,6 @@ class NewsBox extends Component {
         let request;
         request = new Request(newsAPImain + "country=ca" + apiKey);
         fetch(request)
-        // fetch(new Request("https://newsapi.org/v2/everything?q=bitcoin"))
             .then(res => res.json())
             .then(
                 (result) => {
@@ -104,11 +99,10 @@ class NewsBox extends Component {
             );
         } else {
             return (
-                <div className="module news">
+                <div className="module-news">
                     <form className="category" onSubmit={this.handleSubmit}>
-                    <label>
-                        Cateogory: <br />
-                        {/* <input type="text" placeholder="Search.." id="myInput" onkeyup={this.processInput} /> */}
+                    <label className="category">
+                            Category: &nbsp;
                         <select value={category} onChange={this.handleCategoryChange}>            
                             <option value="business">business</option>
                             <option value="entertainment">entertainment</option>
@@ -119,18 +113,12 @@ class NewsBox extends Component {
                             <option value="technology">technology</option>
                         </select>
                     </label>
-                    <input type="submit" value="Submit" />
+                        <input className="category" type="submit" value="Submit" />
                     </form>
 
                     <form className="country" onSubmit={this.handleSubmit}>
-                        <label>
-                            Country: <br />
-                            {/* <input list="countries" id="countryChoice" value={country} onChange={this.handleCountryChange}/>
-                                <datalist id="countries" >
-                                <option data-value= "United Arab Emirates" value="ae"></option>
-                                <option value="ar"> Argentina </option> 
-                                <option value="at"> Austria </option> 
-                                </datalist> */}
+                        <label className="country">
+                            Country: &nbsp;
                             <select value={country} onChange={this.handleCountryChange}>
                                 <option value="ae">United Arab Emirates</option>
                                 <option value="ar"> Argentina </option>
@@ -191,9 +179,12 @@ class NewsBox extends Component {
                         <input type="submit" value="Submit" />
                     </form>
 
+                   
                     <div className="articles">
                         {articles.map((article) => (<Article key={article["url"]} article={article} />))}
                     </div>
+                    
+                    
                 </div>
             );
             

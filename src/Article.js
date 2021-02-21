@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
+import "./Article.css";
 
 export class Article extends Component {
     render() {
-        const { author, content, description, publishedAt, source, title, url, urlToImage} = this.props.article;
+        const { content, description, publishedAt, source, title, url, urlToImage} = this.props.article;
         const date = new Date(publishedAt);
 
         return (
-            <div className="module article">
+           
+            <div className="module-article">
                 <h1> {title} </h1>
-                 <h2> 
-                 {/* {author != null ? "Author: " + author : "No Author"} <br />  */}
-                    Source: <a href={url}>  {source.name} </a>
-                     </h2>
-                <h3> {description} </h3>
-                <p> Published on: {date.toLocaleDateString()} </p>
-                <p> <img src= {urlToImage} /> </p>
-                <p> {content} </p>
+
+                <p className="source"> Source: <a href={url}>  {source.name} </a> </p>
+
+                <p className="pub"> Published on: {date.toLocaleDateString()} </p>
+
+                <p className="desc"> {description} </p>
+                
+                <img src= {urlToImage} /> 
+
+                <p className="content"> {content} </p>
                 
             </div>
+            
         )
     }
 }
