@@ -1,19 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import Article from "./Article";
-import "./NewsBox.css";
+import "./NewsBox.scss";
 
 const newsAPImain = "http://newsapi.org/v2/top-headlines?";
-const apiKey = "&apiKey=f8d50294fffa4836a8c3bacb603f03c7";
+const apiKey = `&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`;
 
-const options = [
-    { name: 'Canada', value: 'ca' },
-    { name: 'English', value: 'en' },
-];
+// const options = [
+//     { name: 'Canada', value: 'ca' },
+//     { name: 'English', value: 'en' },
+// ];
 
-class NewsBox extends Component {
+class NewsBox extends React.Component {
     constructor(props) {
-        super(props); 
-        this.state = { 
+        super(props);
+        this.state = {
             status: null,
             totalResults: 0,
             articles: [{
@@ -87,10 +87,10 @@ class NewsBox extends Component {
             );
     }
 
-    
+
     render() {
         const {articles, error, status, category, country} = this.state;
-        
+
         if (error != null || status === "error") {
             return (
                 <div className = "error">
@@ -99,11 +99,11 @@ class NewsBox extends Component {
             );
         } else {
             return (
-                <div className="module-news">
+                <div className="module news">
                     <form className="category" onSubmit={this.handleSubmit}>
                     <label className="category">
                             Category: &nbsp;
-                        <select value={category} onChange={this.handleCategoryChange}>            
+                        <select value={category} onChange={this.handleCategoryChange}>
                             <option value="business">business</option>
                             <option value="entertainment">entertainment</option>
                             <option value="general">general</option>
@@ -122,8 +122,8 @@ class NewsBox extends Component {
                             <select value={country} onChange={this.handleCountryChange}>
                                 <option value="ae">United Arab Emirates</option>
                                 <option value="ar"> Argentina </option>
-                                <option value="at"> Austria </option> 
-                                <option value="au"> Australia </option> 
+                                <option value="at"> Austria </option>
+                                <option value="au"> Australia </option>
                                 <option value="be"> Belgium </option>
                                 <option value="bg"> Bulgaria </option>
                                 <option value="br"> Brazil </option>
@@ -179,18 +179,17 @@ class NewsBox extends Component {
                         <input type="submit" value="Submit" />
                     </form>
 
-                   
+
                     <div className="articles">
                         {articles.map((article) => (<Article key={article["url"]} article={article} />))}
                     </div>
-                    
-                    
+
+
                 </div>
             );
-            
+
         }
     }
 }
 
 export default NewsBox;
-
