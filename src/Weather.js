@@ -65,12 +65,12 @@ class Weather extends React.Component {
     const weather = current.weather[0];
 
     if (error) {
-      return <div className="module weather error">Error: {error.message}</div>;
+      return <div className="module weather error"><div className="wrapper">Error: {error.message}</div></div>;
     } else if (!isLoaded) {
-      return <div className="module weather loading">Loading...</div>;
+      return <div className="module weather loading"><div className="wrapper">Loading...</div></div>;
     } else {
       return (
-        <div className="module weather">
+        <div className="module weather"><div className="wrapper">
           <h1 className="city">{city}</h1>
           <h1 className="country">{country}</h1>
 
@@ -86,7 +86,7 @@ class Weather extends React.Component {
 
             {this.stats()}
             {this.forecast()}
-        </div>
+        </div></div>
       );
     }
   }
@@ -96,16 +96,13 @@ class Weather extends React.Component {
 
     return (
       <ul className="stats">
-        <li><b>Feels Like:</b> {toTemperature(current.feels_like, units)}</li>
-
-        <ul className="hi-lo">
+        <li><b>Feels Like:</b> <span>{toTemperature(current.feels_like, units)}</span></li>
+        <li><b>Wind:</b> <span>{toWindSpeed(current.wind_speed, units)}</span></li>
+        <ul className="daily">
           <li className="title"><b>Daily</b></li>
-          <li className="high"><b>High:</b> {toTemperature(daily_temps.min, units)}</li>
-          <li className="low"><b>Low:</b> {toTemperature(daily_temps.max, units)}</li>
+          <li className="high"><b>High:</b> <span>{toTemperature(daily_temps.min, units)}</span></li>
+          <li className="low"><b>Low:</b> <span>{toTemperature(daily_temps.max, units)}</span></li>
         </ul>
-
-        <li><b>Wind:</b> {toWindSpeed(current.wind_speed, units)}</li>
-
       </ul>
     );
   }
