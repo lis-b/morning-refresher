@@ -1,0 +1,221 @@
+// CITY/COUNTRY
+$city-size: 40px
+$city-weight: 700
+$city-text-transform: initial
+
+$country-size: 20px
+$country-weight: 300
+$country-text-transform: uppercase
+
+// CURRENT WEATHER
+$weather-size: 40px
+$weather-weight: 400
+
+$temperature-size: 80px
+$temperature-weight: 600
+
+$words-margin: 10px
+$current-margin-top: 30px
+$current-margin-bottom: 20px
+
+// DESCRIPTION AND STATS
+$desc-size: 17px
+$desc-weight: 300
+
+$stats-title-weight: 700
+$stats-title-text-transform: uppercase
+
+$stats-gap: 7px
+
+$stats-size: 17px
+$stats-weight: 300
+
+$stats-margin-top: 30px
+$stats-margin-bottom: 40px
+
+$li-margin: 2px
+
+$daily-margin-top: 20px
+$daily-separate: 20px
+
+$daily-title-size: 20px
+$daily-title-weight: 700
+
+// FORECAST
+$forecast-size: 20px
+$forecast-weight: 700
+$forecast-text-transform: uppercase
+
+$hour-box-size: 75px
+$hour-box-margin: 15px
+$icon-size: 50px
+
+$hour-weather-size: 15px
+$hour-weather-weight: 300
+$hour-weather-margin-top: 0
+$hour-weather-margin-bottom: 2px
+
+$hour-temp-size: 17px
+$hour-temp-weight: 700
+
+*
+  line-height: 1
+
+//////////////////
+
+*
+ text-align: center
+
+h1,
+h2,
+h3,
+ul,
+li
+  margin: 0
+
+// CITY/COUNTRY
+h1.city
+  font:
+    size: $city-size
+    weight: $city-weight
+  text-transform: $city-text-transform
+
+h1.country
+  font:
+    size: $country-size
+    weight: $country-weight
+  text-transform: $country-text-transform
+
+// CURRENT WEATHER
+div.current
+  width: auto
+  display: inline-block
+  margin:
+    top: $current-margin-top
+    bottom: $current-margin-bottom
+
+  &::after
+    content: ""
+    clear: both
+    display: table
+
+  div.large
+    float: left
+    padding: 0
+
+    svg
+      width: $weather-size + $temperature-size
+
+  div.words
+    float: left
+    width: auto
+    margin-left: $words-margin
+
+    h2
+      margin: 0
+      text-align: left
+
+      &.weather-type
+        text-transform: uppercase
+        font:
+          weight: $weather-weight
+          size: $weather-size
+
+      &.temperature
+        font:
+          size: $temperature-size
+          weight: $temperature-weight
+
+div.hour
+  h2
+    text-transform: uppercase
+    font-weight: normal
+
+// DESCRIPTION AND STATS
+h3.weather-desc
+  font:
+    size: $desc-size
+    weight: $desc-weight
+
+ul.stats
+  display: grid
+  justify-items: center
+  margin:
+    top: $stats-margin-top
+    bottom: $stats-margin-bottom
+  font:
+    size: $stats-size
+    weight: $stats-weight
+
+  &,
+  ul,
+  li
+    list-style: none
+    padding: 0
+
+  li
+    margin: $li-margin
+
+  b
+    font:
+      weight: $stats-title-weight
+    text-transform: $stats-title-text-transform
+
+  span
+    margin-left: $stats-gap
+
+ul.daily
+  display: grid
+  margin-top: $daily-margin-top
+
+  li.title
+    font:
+      size: $daily-title-size
+      weight: $daily-title-weight
+    grid-column: span 2
+    margin-bottom: 0
+    text-transform: $stats-title-text-transform
+
+  li.high
+    margin:
+      right: $daily-separate
+
+// FORECAST
+div.forecasts
+  h1
+    font:
+      size: $forecast-size
+      weight: $forecast-weight
+    text-transform: $forecast-text-transform
+
+div.hour
+  display: inline-block
+  width: $hour-box-size
+  margin: $hour-box-margin
+
+  h2
+    margin:
+      top: $hour-weather-margin-top
+      bottom: $hour-weather-margin-bottom
+    font:
+      size: $hour-weather-size
+      weight: $hour-weather-weight
+
+
+  h3
+    font:
+      size: $hour-temp-size
+      weight: $hour-temp-weight
+
+// OTHER
+div.weather
+  display: grid
+  justify-content: center
+  align-content: center
+
+div.icon
+  display: inline-block
+
+  svg
+    width: $icon-size
+    display: block
