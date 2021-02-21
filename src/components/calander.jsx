@@ -13,7 +13,7 @@ class Calander extends Component {
          this.renderEvents = this.renderEvents.bind(this);
      }
 
-     handleNewEvent(eventName) {
+     handleNewEvent(time, eventName) {
         this.setState({events: this.state.events.concat(eventName),
                        count: this.state.count + 1});
      }
