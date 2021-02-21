@@ -23,9 +23,10 @@ class TextInput extends Component {
                 <label1>
                     Time
                     <input
-                        type='text'
+                        type='time'
                         name= "Time"
                         ref={(time) => this.time = time}
+                        required
                         />
                 </label1>
                 <label2>
