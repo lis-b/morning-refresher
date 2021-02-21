@@ -11,5 +11,7 @@ This website was created during BCHacks 2.0 for their 24 hour hackathon. We used
 - Run 'npm i -g serve'
 - Run 'npm run serve' from a terminal in the morning-refresher directory.
 
+Note that the production build must be run instead of development, due to API keys not being directly included in the repo!
+
 ##### Sample Screenshot of the site
 ![Morning Refresher](morning-refresher-demo.png)
