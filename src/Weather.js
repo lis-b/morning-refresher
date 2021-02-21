@@ -1,8 +1,6 @@
 import React from 'react';
 
-// import WeatherIcon from './WeatherIcon';
-
-// const iconURL = icon => `http://openweathermap.org/img/wn/${icon}@2x.png`;
+import WeatherIcon from './WeatherIcon';
 
 class Weather extends React.Component {
   constructor(props) {
@@ -13,6 +11,8 @@ class Weather extends React.Component {
       lat: 49.2827,
       lon: -123.1207,
       units: 'metric',
+      hours: 5,
+
       current: {
         weather: [{}]
       },
@@ -20,7 +20,6 @@ class Weather extends React.Component {
         weather: [{}]
       }],
       daily_temps: {},
-      hours: 5,
       isLoaded: false,
       isSet: true,
       error: null,
@@ -73,6 +72,7 @@ class Weather extends React.Component {
         <div className="module weather">
           <h1 className="city">{city}, {country}</h1>
 
+            <WeatherIcon code={weather.icon} />
             <h2 className="weather-type">{weather.main}</h2>
             <h2 className="temperature">{toTemperature(current.temp, units)}</h2>
 
@@ -114,6 +114,7 @@ class Weather extends React.Component {
           let weather = item.weather[0];
           return (
             <div className="hour">
+              <WeatherIcon code={weather.icon} />
               <h2>{weather.main}</h2>
               <h3 className="temp">{toTemperature(item.temp, units)}</h3>
             </div>
