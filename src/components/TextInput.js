@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './TextInput.sass';
-
 class TextInput extends React.Component {
     state = {  }
 
@@ -21,10 +19,10 @@ class TextInput extends React.Component {
     }
     render() {
         return (
-            <div className="add">
+            <div className="text-input">
             <form onSubmit={this.handleSubmit}>
-              <div className="time">
-                  <span>Time (24h):</span>
+                  <b>Time (24h):</b>
+                  <span>
                     <input
                         type = 'text'
                         name = 'Hours'
@@ -34,7 +32,7 @@ class TextInput extends React.Component {
                         required
                         />
 
-                    :
+                    <span>:</span>
                     <input
                         type ='text'
                         name = 'Minutes'
@@ -43,17 +41,14 @@ class TextInput extends React.Component {
                         ref = {(minute) => this.minute = minute}
                         required
                         />
-              </div>
-              <div className="event">
-                    <span>Event Name:</span>
+                    </span>
+                    <b>Event Name:</b>
                     <input
-                        style ={{width:"150px"}}
                         type='text'
                         name='Event Name'
                         ref={(eventName) => this.eventName = eventName}
                         required
                         />
-                </div>
                 <button type="submit">Add Event</button>
             </form>
             </div>

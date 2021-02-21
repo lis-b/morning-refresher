@@ -1,5 +1,5 @@
 $background: linear-gradient(to top, #c4c5c7, #dcdddf, #ebebeb)
-$background-fallback: #dcdddf
+$background-fallback: #ebebeb
 
 $module-background: hsla(0, 0%, 100%, 0.4)
 $text-color: hsla(0, 0%, 0%, 0.9)
@@ -8,6 +8,8 @@ $toggle-color: hsl(0, 0%, 0%)
 $toggle-opacity: 0.9
 
 $shadow: 0 0 10px 2px hsla(0, 0%, 0%, 0.15)
+
+$input-focus: hsla(0, 0%, 0%, 0.1)
 
 body
   background: $background
@@ -30,3 +32,16 @@ body.light-mode
 
   img
     box-shadow: $shadow
+
+  button
+    background-color: $text-color
+    color: $background-fallback
+
+  select,
+  input
+    border-color: $text-color
+    color: $text-color
+
+  input
+    &:focus
+      background-color: $input-focus
