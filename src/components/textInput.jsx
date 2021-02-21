@@ -5,13 +5,15 @@ class TextInput extends Component {
 
     constructor(props){
         super(props);
-        this.state={eventName: ""};
+        this.state={};
     }
 
     handleSubmit = event => {
         event.preventDefault();
         this.setState({eventName: this.eventName.value});
         this.props.handleNewEvent(this.time.value + "   " + this.eventName.value);
+        this.time.value = '';
+        this.eventName.value = '';
         
     }
     render() { 
