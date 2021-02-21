@@ -10,3 +10,6 @@ Install npm through node.js [here](https://nodejs.org/en/).
 Clone the repository
 Run npm install to install all dependencies.
 Run npm start from a terminal in the morning-refresher directory.
+
+##### Sample Screenshot of the site
+![Morning Refresher](morning-refresher-demo.png)
