@@ -1,4 +1,5 @@
 import React from 'react';
+import './Weather.sass';
 
 import WeatherIcon from './WeatherIcon';
 
@@ -70,11 +71,16 @@ class Weather extends React.Component {
     } else {
       return (
         <div className="module weather">
-          <h1 className="city">{city}, {country}</h1>
+          <h1 className="city">{city}</h1>
+          <h1 className="country">{country}</h1>
 
-            <WeatherIcon code={weather.icon} />
-            <h2 className="weather-type">{weather.main}</h2>
-            <h2 className="temperature">{toTemperature(current.temp, units)}</h2>
+          <div className="current">
+            <WeatherIcon code={weather.icon} size='large' />
+            <div className="words">
+              <h2 className="weather-type">{weather.main}</h2>
+              <h2 className="temperature">{toTemperature(current.temp, units)}</h2>
+            </div>
+          </div>
 
             <h3 className="weather-desc">{weather.description}</h3>
 

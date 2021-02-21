@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+import './import-normalize.css';
+import './index.sass';
+
 import Weather from './Weather';
 
 ReactDOM.render(

@@ -21,11 +21,13 @@ import { ReactComponent as MistNight } from './svg/Dripicons/weather/fog.svg';
 
 function WeatherIcon(props) {
   return (
-    <div className="icon">
+    <div className={classes(props.size)}>
       {pickIcon(props.code)}
     </div>
   );
 }
+
+const classes = size => `icon${size !== undefined ? ` ${size}` : '' }`;
 
 const pickIcon = code => {
   switch (code) {

@@ -1,0 +1,19 @@
+@mixin font($style, $weight, $url-type)
+  @font-face
+    font:
+      family: "Open Sans"
+      display: block
+      style: $style
+      weight: $weight
+    src: url("./OpenSans/OpenSans-#{$url-type}.woff2") format("woff2"), url("./OpenSans/OpenSans-#{$url-type}.ttf") format("truetype")
+
+@include font(normal, 300, Light)
+@include font(italic, 300, LightItalic)
+@include font(normal, 400, Regular)
+@include font(italic, 400, Italic)
+@include font(normal, 600, SemiBold)
+@include font(italic, 600, SemiBoldItalic)
+@include font(normal, 700, Bold)
+@include font(italic, 700, BoldItalic)
+@include font(normal, 800, ExtraBold)
+@include font(italic, 800, ExtraBoldItalic)

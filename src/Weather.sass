@@ -1,0 +1,62 @@
+
+// CURRENT WEATHER
+$weather-size: 25px
+$temperature-size: 75px
+$words-margin: 10px
+
+div
+  border: 1px solid red
+
+//////////////////
+
+h1,
+h2,
+h3
+  margin: 0
+
+div.current
+  width: auto
+  display: inline-block
+
+  &::after
+    content: ""
+    clear: both
+    display: table
+
+  div.large
+    float: left
+    padding: 0
+
+    svg
+      width: $weather-size + $temperature-size
+
+  div.words
+    float: left
+    width: auto
+    margin-left: $words-margin
+
+    h2
+      margin: 0
+      line-height: 1
+      text-align: left
+
+      &.weather-type
+        text-transform: uppercase
+        font:
+          weight: normal
+          size: $weather-size
+
+      &.temperature
+        font-size: $temperature-size
+
+div.hour
+  h2
+    text-transform: uppercase
+    font-weight: normal
+
+div.icon
+  display: inline-block
+
+  svg
+    width: 50px
+    display: block
