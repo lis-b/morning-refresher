@@ -13,7 +13,7 @@ class Weather extends React.Component {
       lon: -123.1207,
 
       units: 'metric',
-      hours: 5,
+      hours: 8,
 
       current: {
         weather: [{}]

@@ -1,0 +1,30 @@
+$background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)
+$background-fallback: #dcdddf
+
+$module-background: hsla(0, 0%, 100%, 0.4)
+$text-color: hsla(0, 0%, 0%, 0.9)
+
+$toggle-color: hsl(0, 0%, 0%)
+$toggle-opacity: 0.9
+
+$shadow: 0 0 10px 2px hsla(0, 0%, 0, 0.15)
+
+body.light-mode
+  color: $text-color
+  background: $background
+  background-color: $background-fallback
+
+  &:before
+    opacity: 0
+
+  svg
+    fill: $text-color
+
+    & > circle,
+    & > rect
+      color: $toggle-color
+      fill: $toggle-color
+
+  div.module
+    background: $module-background
+    box-shadow: $shadow

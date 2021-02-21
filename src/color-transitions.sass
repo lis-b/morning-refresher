@@ -1,0 +1,15 @@
+$time: 0.3s
+
+@function time($property)
+  @return $property $time
+
+body
+  transition: time(color), time(background-color)
+  &:before
+    transition: time(opacity)
+
+div.module
+  transition: time(background-color), time(box-shadow)
+
+  svg
+    transition: time(fill)
