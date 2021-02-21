@@ -10,7 +10,6 @@ class TextInput extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.setState({eventName: this.eventName.value});
         var time = [this.hour.value, this.minute.value];
         this.props.handleNewEvent(time, this.eventName.value);
         this.hour.value = '';
@@ -20,11 +19,12 @@ class TextInput extends Component {
     }
     render() { 
         return ( 
-            <>
+            <div style={{textAlign:"center", top:"650px", position:"absolute"}}>
             <form onSubmit={this.handleSubmit}>
                 <label1>
                     Time (24hr)
                     <input
+                        style = {{width:"40px"}}
                         type='number'
                         name= "Time"
                         min='0'
@@ -36,6 +36,7 @@ class TextInput extends Component {
                 <label3>
                     :
                     <input
+                        style = {{width:"20px"}}
                         type='text'
                         name= ":"
                         min='0'
@@ -44,19 +45,19 @@ class TextInput extends Component {
                         required
                         />
                 </label3>
-                <label2>
-                    Event Name
+                <label2 style={{padding:"15px"}}>
+                    <span style={{padding:"5px"}}>Event Name:</span>  
                     <input
+                        style ={{width:"150px"}}
                         type='text'
                         name='Event Name'
                         ref={(eventName) => this.eventName = eventName}
                         required
                         />
                 </label2>
-                <button type = 'submit'>Click to Add Event</button>
+                <button type = 'submit'>Add Event</button>
             </form>
-            <h3>EventName is: {this.state.eventName}</h3>
-            </>
+            </div>
          );
     }
 }

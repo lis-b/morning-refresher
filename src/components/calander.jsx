@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import TextInput from './textInput';
 
+
+const styleSheet = {
+    margin: "30px auto",
+    width: "600px",
+    height:"700px",
+    boxSizing: "border-box",
+    background: "#FEC8D8",
+    padding:"40px"
+    
+}
 class Calander extends Component {
     state = { 
         count: 0,
@@ -25,16 +35,27 @@ class Calander extends Component {
      }
 
      renderEvents(){
-         if(EventSource.length === 0) return <p>No events scheduled today</p>;
+         if(this.state.count === 0) return <p>No events scheduled today</p>;
         
-         return <ul>{this.state.events.map(item => (<li key={item}>{item[0][0]+':'+item[0][1] + '        '+ item[1]}</li>))}</ul>;
+         return <ul style={{padding:"25px"}}>{this.state.events.map(item => (<li sytle={{padding:"20px"}} key={item}>{item[0][0]+':'+item[0][1] + '        '+ item[1]}</li>))}</ul>;
+     }
+
+     renderCount(){
+         var business = "";
+         if(this.state.count == 0)
+            business = "Take the day off!";
+        else if(this.state.count <5)
+            business = "A normal relaxing day.";
+        else
+            business = "Wow thats a lot of events!";
+        return <p style={{textAlign:"center"}}>{this.state.count} events today. {business}</p>
      }
 
     render() { 
         return (
-            <div>
-                
-                <span>{this.state.count}</span>
+            <div style={styleSheet}>
+                <h1 style={{color:"#875C36", textAlign:"center"}}> Today's Calendar</h1>
+                <span>{this.renderCount()}</span>
                 {this.renderEvents()}
                 <TextInput  handleNewEvent = {this.handleNewEvent}/>
                 
@@ -42,6 +63,8 @@ class Calander extends Component {
             
             )
     }
+
+
 }
  
 export default Calander;
