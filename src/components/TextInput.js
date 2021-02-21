@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './TextInput.sass';
+
 class TextInput extends React.Component {
     state = {  }
 
@@ -19,34 +21,31 @@ class TextInput extends React.Component {
     }
     render() {
         return (
-            <div style={{textAlign:"center", top:"650px", position:"absolute"}}>
+            <div className="add">
             <form onSubmit={this.handleSubmit}>
-                <label1>
-                    Time (24hr)
+              <div className="time">
+                  <span>Time (24h):</span>
                     <input
-                        style = {{width:"40px"}}
-                        type='number'
-                        name= "Time"
-                        min='0'
-                        max='23'
-                        ref={(hour) => this.hour = hour}
+                        type = 'text'
+                        name = 'Hours'
+                        min = '0'
+                        max = '23'
+                        ref = {(hour) => this.hour = hour}
                         required
                         />
-                </label1>
-                <label3>
+
                     :
                     <input
-                        style = {{width:"20px"}}
-                        type='text'
-                        name= ":"
-                        min='0'
+                        type ='text'
+                        name = 'Minutes'
+                        min = '0'
                         max ='59'
-                        ref={(minute) => this.minute = minute}
+                        ref = {(minute) => this.minute = minute}
                         required
                         />
-                </label3>
-                <label2 style={{padding:"15px"}}>
-                    <span style={{padding:"5px"}}>Event Name:</span>
+              </div>
+              <div className="event">
+                    <span>Event Name:</span>
                     <input
                         style ={{width:"150px"}}
                         type='text'
@@ -54,8 +53,8 @@ class TextInput extends React.Component {
                         ref={(eventName) => this.eventName = eventName}
                         required
                         />
-                </label2>
-                <button style={{borderRadius:"7px"}} type = 'submit'>Add Event</button>
+                </div>
+                <button type="submit">Add Event</button>
             </form>
             </div>
          );

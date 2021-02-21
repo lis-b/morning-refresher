@@ -7,10 +7,10 @@ class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: 'Vancouver',
+      city: 'Springfield',
       country: 'Canada',
-      lat: 49.2827,
-      lon: -123.1207,
+      lat: 49.9051,
+      lon: -96.7432,
 
       units: 'metric',
       hours: 8,
@@ -101,8 +101,8 @@ class Weather extends React.Component {
         <li><b>Wind:</b> <span>{toWindSpeed(current.wind_speed, units)}</span></li>
         <ul className="daily">
           <li className="title">Daily</li>
-          <li className="high"><b>High:</b> <span>{toTemperature(daily_temps.min, units)}</span></li>
-          <li className="low"><b>Low:</b> <span>{toTemperature(daily_temps.max, units)}</span></li>
+          <li className="high"><b>High:</b> <span>{toTemperature(daily_temps.max, units)}</span></li>
+          <li className="low"><b>Low:</b> <span>{toTemperature(daily_temps.min, units)}</span></li>
         </ul>
       </ul>
     );

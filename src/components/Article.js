@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import "./Article.css";
+import React from 'react'
+import "./Article.scss";
 
-export class Article extends Component {
+export class Article extends React.Component {
     render() {
         const { content, description, publishedAt, source, title, url, urlToImage} = this.props.article;
         const date = new Date(publishedAt);
 
         return (
-           
+
             <div className="module-article">
                 <h1> {title} </h1>
 
@@ -16,13 +16,13 @@ export class Article extends Component {
                 <p className="pub"> Published on: {date.toLocaleDateString()} </p>
 
                 <p className="desc"> {description} </p>
-                
-                <img src= {urlToImage} /> 
+
+                <img src={urlToImage} alt="article-appropriate content" />
 
                 <p className="content"> {content} </p>
-                
+
             </div>
-            
+
         )
     }
 }
