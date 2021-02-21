@@ -4,11 +4,14 @@ import TextInput from './textInput';
 
 const styleSheet = {
     margin: "30px auto",
+    borderRadius:"30px",
     width: "600px",
     height:"700px",
     boxSizing: "border-box",
     background: "#FEC8D8",
-    padding:"40px"
+    padding:"40px",
+    fontFamily:"Open Sans",
+    fontWeight:"bold"
     
 }
 class Calander extends Component {

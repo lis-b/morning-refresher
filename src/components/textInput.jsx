@@ -55,7 +55,7 @@ class TextInput extends Component {
                         required
                         />
                 </label2>
-                <button type = 'submit'>Add Event</button>
+                <button style={{borderRadius:"7px"}} type = 'submit'>Add Event</button>
             </form>
             </div>
          );
